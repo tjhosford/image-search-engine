@@ -13,7 +13,7 @@ Instructions
 Why?
 -------------
 
-Google surprisingly only offers this kind of thing for very small websites with their Custom Search API, which won't scale to a large number of users.  So alas we need to use Bing.
+Google surprisingly only offers a full-web image search API for very small websites with their Custom Search API, which won't scale to a large number of users.  So Bing is actually the way to go for this kind of thing.
 
 It seems like Bing no longer supports being hit from the front-end directly, so a proxy server is needed.
 
