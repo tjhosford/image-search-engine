@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Image Search</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+      //var host = "http://localhost:5000"
+      var host = "http://bing-image-search.herokuapp.com"
+
+      $(document).ready(function() {
+        $("#search").click(function() {
+          $("#images").html("<img src='http://www.justluxe.com/best-of-luxury/images/bol-loading.gif'>")
+
+          var query = $("#query").val()
+
+          $.ajax({
+            url: host + "?query=" + query,
+            dataType: "jsonp",
+            success: function(results) {
+              $("#images").empty()
+              results.forEach(function(res) {
+                $("#images").append("<div><img src=\"" + res + "\"></div>")
+              })
+            }
+          })
+
+        })
+      })
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <style type="text/css">
+      #query {
+        width: 350px;
+        margin-top: 10px;
+        margin-right: 10px;
+      }
+      img {
+        width: 300px;
+        margin-top: 20px;
+      }
+      body {
+        background: black;
+        color: white;
+        padding: 20px;
+      }
+    </style>
+  <head>
+  <body>
+    <h2>Image Search</h2>
+    <input type="search" id="query" placeholder="enter your desired image (family-friendly please)"></input>
+    <input type="submit" id="search" value="search" />
+    <br />
+    <div id="images"></div>
+  </body>
+</html>
+
